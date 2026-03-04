@@ -1,0 +1,12 @@
+import React from "react"
+import Layout from "../components/layout"
+
+export default function ColdDrinksPage() {
+  return (
+    <Layout>
+      <h1>Cold Drinks</h1>
+      <p>Filter by: Cocktails, Mocktails, Juices, Smoothies, Frappuccinos, Iced Coffee/Tea</p>
+      <p>(Next step: connect these categories to CMS content.)</p>
+    </Layout>
+  )
+}

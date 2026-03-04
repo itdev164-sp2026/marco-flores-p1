@@ -1,51 +1,57 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
- */
+import React from "react"
+import styled, { createGlobalStyle } from "styled-components"
+import { Link } from "gatsby"
 
-import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+const GlobalStyle = createGlobalStyle`
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+`
 
-import Header from "./header"
-import "./layout.css"
+const Header = styled.header`
+  padding: 16px 24px;
+  border-bottom: 1px solid #eee;
+`
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Nav = styled.nav`
+  display: flex;
+  gap: 16px;
+  align-items: center;
+`
 
+const Brand = styled(Link)`
+  font-weight: 700;
+  margin-right: 16px;
+`
+
+const Main = styled.main`
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+`
+
+const Footer = styled.footer`
+  padding: 16px 24px;
+  border-top: 1px solid #eee;
+  text-align: center;
+`
+
+export default function Layout({ children }) {
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+      <GlobalStyle />
+      <Header>
+        <Nav>
+          <Brand to="/">SipSpot</Brand>
+          <Link to="/hot">Hot Drinks</Link>
+          <Link to="/cold">Cold Drinks</Link>
+          <Link to="/about">About</Link>
+        </Nav>
+      </Header>
+
+      <Main>{children}</Main>
+
+      <Footer>© {new Date().getFullYear()} SipSpot</Footer>
     </>
   )
 }
-
-export default Layout
