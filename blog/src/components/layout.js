@@ -43,6 +43,7 @@ export default function Layout({ children }) {
       <Header>
         <Nav>
           <Brand to="/">SipSpot</Brand>
+          <Link to="/recipes">Recipes</Link>
           <Link to="/hot">Hot Drinks</Link>
           <Link to="/cold">Cold Drinks</Link>
           <Link to="/about">About</Link>

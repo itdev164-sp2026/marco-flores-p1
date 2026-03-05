@@ -3,30 +3,33 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <h1>SipSpot</h1>
-    <p>
-      Find your next favorite drink. Filter by hot/cold, then by category like
-      cocktails, juices, lattes, and more.
-    </p>
+const IndexPage = () => {
+  return (
+    <Layout>
+      <h1>SipSpot</h1>
+      <p>
+        Browse drink recipes by temperature and category — hot or cold, alcoholic
+        or non-alcoholic.
+      </p>
 
-    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-      <Link to="/cold">Browse Cold Drinks →</Link>
-      <Link to="/hot">Browse Hot Drinks →</Link>
-      <Link to="/about">About →</Link>
-    </div>
+      <h2>Start browsing</h2>
+      <ul>
+        <li>
+          <Link to="/cold">Cold Drinks</Link>
+        </li>
+        <li>
+          <Link to="/hot">Hot Drinks</Link>
+        </li>
+      </ul>
 
-    <hr style={{ margin: "24px 0" }} />
-
-    <h2>How it works</h2>
-    <ol>
-      <li>Choose Hot or Cold</li>
-      <li>Pick a category (ex: Cocktails, Juices, Latte)</li>
-      <li>Open a recipe and follow the steps</li>
-    </ol>
-  </Layout>
-)
+      <h2>Popular categories</h2>
+      <ul>
+        <li>Cold: Cocktails, Mocktails, Juices, Smoothies, Frappuccinos</li>
+        <li>Hot: Coffee, Cappuccino, Latte, Hot Chocolate, Tea</li>
+      </ul>
+    </Layout>
+  )
+}
 
 export const Head = () => <Seo title="Home" />
 export default IndexPage
