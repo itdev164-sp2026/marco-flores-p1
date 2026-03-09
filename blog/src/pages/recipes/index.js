@@ -1,36 +1,12 @@
 import * as React from "react"
+import { graphql } from "gatsby"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import DrinkCard from "../../components/DrinkCard"
 import Grid from "../../components/Grid"
 
-export default function RecipesIndexPage() {
-  const recipes = [
-    {
-      title: "Margarita",
-      badge: "Cold • Alcoholic",
-      description: "Tequila + lime + triple sec classic.",
-      to: "/recipes/margarita",
-    },
-    {
-      title: "Mojito",
-      badge: "Cold • Alcoholic",
-      description: "Minty rum drink with lime and soda.",
-      to: "/recipes/mojito",
-    },
-    {
-      title: "Piña Colada",
-      badge: "Cold • Alcoholic",
-      description: "Pineapple + coconut + rum.",
-      to: "/recipes/pina-colada",
-    },
-    {
-      title: "Old Fashioned",
-      badge: "Cold • Alcoholic",
-      description: "Whiskey cocktail with bitters and sugar.",
-      to: "/recipes/old-fashioned",
-    },
-  ]
+export default function RecipesIndexPage({ data }) {
+  const recipes = data.allContentfulDrinkRecipe.nodes
 
   return (
     <Layout>
@@ -38,18 +14,32 @@ export default function RecipesIndexPage() {
       <p>Browse all drink recipes on SipSpot.</p>
 
       <Grid>
-        {recipes.map(r => (
+        {recipes.map(recipe => (
           <DrinkCard
-            key={r.to}
-            title={r.title}
-            badge={r.badge}
-            description={r.description}
-            to={r.to}
+            key={recipe.slug}
+            title={recipe.title}
+            badge={`${recipe.temperature} • ${recipe.isAlcoholic ? "Alcoholic" : "Non-Alcoholic"}`}
+            description={recipe.description}
+            to={`/recipes/${recipe.slug}`}
           />
         ))}
       </Grid>
     </Layout>
   )
 }
+
+export const query = graphql`
+  {
+    allContentfulDrinkRecipe(sort: { title: ASC }) {
+      nodes {
+        title
+        slug
+        temperature
+        isAlcoholic
+        description
+      }
+    }
+  }
+`
 
 export const Head = () => <Seo title="Recipes" />

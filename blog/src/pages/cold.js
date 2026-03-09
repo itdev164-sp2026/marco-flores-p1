@@ -11,7 +11,6 @@ export default function ColdPage() {
 
       <ul>
         <li><Link to="/cold/cocktails">Cocktails</Link></li>
-        <li><Link to="/cold/mocktails">Mocktails</Link></li>
         <li><Link to="/cold/juices">Juices</Link></li>
         <li><Link to="/cold/smoothies">Smoothies</Link></li>
         <li><Link to="/cold/frappuccinos">Frappuccinos</Link></li>

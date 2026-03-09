@@ -13,7 +13,6 @@ export default function HotPage() {
         <li><Link to="/hot/coffee">Coffee</Link></li>
         <li><Link to="/hot/cappuccino">Cappuccino</Link></li>
         <li><Link to="/hot/latte">Latte</Link></li>
-        <li><Link to="/hot/chocolate">Hot Chocolate</Link></li>
         <li><Link to="/hot/tea">Tea</Link></li>
       </ul>
     </Layout>
